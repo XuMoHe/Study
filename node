@@ -1,0 +1,979 @@
+# 前端开发
+## 前端开发需要哪些语言
+* HTML
+* CSS
+* Java Scrip
+
+## HTML
+### 相关知识点
+* 注释 
+ * 格式：`<!--内容-->`
+ * 快捷键：command+/
+ 
+ ### HTML常用标签
+ * div   块级元素
+ * a     超链接
+ * span  区分样式
+ * h1-h6 标题
+ * p     段落
+ * strong强调（粗体）
+ * em    强调（斜体）
+ * ul    无序列表
+ * ol    有序列表
+ * li    列表项
+ * dl    自定义列表
+ * dt    自定义列表标题
+ * mark  标记
+ * img   图片
+ * header头部
+ * nav   导航
+ * footer底部
+ * section板块
+ * article内容
+ * aside 附属信息
+ * time  时间
+ * HTML所有标签及使用手册地址：http://www.w3school.com.cn
+### HTML a标签
+* a标签的特点：
+	* 语法：`<a href="网络地址/内部地址">连接地址<a/>`；
+	* 默认带有下划线，且下划线等于文字描述的长度，如果需要去除可通过`text-decoration:none;`进行样式的修改；
+	* 不会继承父级元素的样式；
+* a标签的功能：
+	* 跳转页面  通过`href`连接要跳转的地址；连接本地网页时需注意，连接与当前界面同级别的页面直接写即可，如需要连接其他同一级别文件夹中的页面则需要添加`/`,如连接的为上一级文件夹中的页面，则需要用`..`确认文件夹，再通过`/`指定路径进行连接；没地址的情况下可写`#`;
+	* `target` 可控制要打开的网页`_blank`是在新页面中打开;`_self`在本页面中打开(默认值)；
+	* 语法：`<a href="https://www.baidu.com" target="_blank">百度</a>`
+	* `base` 可在样式标签下使用，控制当前页面下所有`a`标签的打开方式，如：`<base tarfet="_blank" />` `base`还可以控制整个页面所有`a`标签打开的连接，如：`<base tarfet="_blank" href="https://www.baidu.com" />`
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			a{
+				text-decoration: none;
+			}
+		</style>
+		<base tarfet="_blank" href="https://www.baidu.com" />
+	</head>
+	<body>
+		<div style= "color:red;">
+			<a href="https://www.baidu.com" target="_blank">百度</a>
+			文字测试
+		</div>
+	</body>
+</html>
+```
+	* 锚点 在`href`的值中写入`#对应的id`
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#red{
+				height:500px;
+				background:red;
+			}
+			#pink{
+				height:500px;
+				background:pink;
+			}
+			#green{
+				height:500px;
+				background:green;
+			}
+			#yellow{
+				height:500px;
+				background:yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="#red">红色</a>
+		<a href="#pink">粉色</a>
+		<a href="#green">绿色</a>
+		<a href="#yellow">黄色</a>
+		<div id="red"></div>
+		<div id="pink"></div>
+		<div id="green"></div>
+		<div id="yellow"></div>
+	</body>
+</html>
+```
+	* 下载 在`href=""`中写入文件的路径即可;如果要下载的文件能够被浏览器打开，则无法被下载，需要压缩文件后，即可正常下载，如不想压缩可通过添加`download="文件名"`来解决浏览器自动打开文件的问题，这是HTML5的新标签；
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="img/1.JPG" download="1.JPG">下载图片</a>
+	</body>
+</html>
+```
+
+
+## CSS
+### CSS的位置 
+* 内部
+	* 内部样式表：把样式写在当前HTML文件中
+	* 语法：`<style></style>`
+	* 缺点：内部样式表的作用范围只存在当前的页面
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:100px;
+				height:100px;
+				background:pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	
+	</body>
+</html>
+```
+
+* 行间
+	* 行间样式表：给单独的标签添加样式
+	* 语法：`<div style = "width:100px"></div>`
+	* 缺点：不利于修改
+	* 练习代码：
+``` HTML 
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	<!-- 其他行不受影响，但只能修改每一行 --> 
+		<div style="width:100px;height:100px;background:pink;">标签1</div>
+		<div style="width:100px;height:100px;background:pink;">标签1</div>
+		<div style="width:100px;height:100px;background:pink;">标签1</div>
+		<div style="width:100px;height:100px;background:pink;">标签1</div>
+		<div style="width:100px;height:100px;background:pink;">标签1</div>
+		<div style="width:100px;height:100px;background:pink;">标签1</div>
+		<div style="width:100px;height:100px;background:pink;">标签1</div>
+		<div style="width:100px;height:100px;background:pink;">标签1</div>
+		<div style="width:100px;height:100px;background:pink;">标签1</div>
+		<div style="width:100px;height:100px;background:pink;">标签1</div>
+		<div>标签2</div>
+	</body>
+</html> 
+```
+* 外部
+	* 外部样式表：把样式写在外部的文件中，需要使用时用地址引用即可
+	* 语法：新建CSS文件、标签选择器{样式}，在HTML文件中引用，`<link rel="stylesheet" href="index.css"/>`
+	* 缺点：需要准确引用，否则不会有效果
+	* 练习代码：
+``` CSS
+div{
+	width:100px;
+	height:100px;
+	background:yellow;
+}
+```
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="index.css"/>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>
+```
+
+### CSS边框的三种表现形式-01
+* css边框（border）的组成：复合样式
+	* 语法：`border: 1px dotted red;`
+	* 边框的粗细 1px
+	* `solid` 表示实线；`dashed`表示虚线；`dotted`表示点划线（不同浏览器显示可能不同，存在兼容性问题）
+	* 边框的颜色 `red` ,`#f00`颜色的16进制表现形式，`rgb(0,0,0)`颜色的表示形式，数值对应的颜色依次为红、绿、蓝;`rgba(0,0,0,0.5)`css3中`a`表示透明度；
+	* 所有属性顺序可进行调换，不影响显示效果；不建议调换养成良好的习惯
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:300px;
+				height:300px;
+				border: 1px dotted red;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+```
+
+### CSS边框的三种表现形式-02
+* css边框（border）的组成：单一样式
+	* 语法：`border-width: 1px;border-style:solid;border-color:red;`
+	* `border-width: 1px;` 边框的粗细
+	* `border-style:solid;`边框的样式
+	* `border-color:red;`边框的颜色
+	* 单一样式中可对每个属性进行4次赋值，且值对应的顺序为：上，右，下左
+	* 练习代码:
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:300px;
+				height:300px;
+				border-width:1px 2px 3px 4px ;
+				border-style: solid dashed dotted solid;
+				border-color:red green yellow blue;
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+```
+	* 单一样式中如果对属性进行了2次赋值，则值对应的顺序为：上下，左右
+	* 练习代码:
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:300px;
+				height:300px;
+				border-width:1px 2px  ;
+				border-style: solid dashed ;
+				border-color:red green ;
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+```
+	* 单一样式中如果对属性进行了3次赋值，则对应的顺序为：上，右左，下
+	* 练习代码:
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:300px;
+				height:300px;
+				border-width:1px 2px 3px ;
+				border-style: solid dashed dotted ;
+				border-color:red green yellow ;
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+```
+
+### CSS边框的三种表现形式-03
+* css边框（border）的组成：指定边框样式
+	* 语法：`border-top: 1px solid red;`其他三边语法相同
+	* `border-top`: 代表上边框
+	* `border-right`: 代表右边框
+	* `border-bottom`: 代表下边框
+	* `border-left`: 代表左边框
+	* 优先级：当使用了指定单条边框时，会自动覆盖上面的复合样式，如需要指定单条边框，直接在复合边框语句下添加即可
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:300px;
+				height:300px;
+				border: 1px solid red;
+				border-top: 1px solid green;
+				border-right: 2px dotted blue;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div></div>
+	</body>
+</html>
+```
+	* `border-top-width`:代表上边框的宽度
+	* `border-top-style`:代表上边框的样式
+	* `border-top-color`:代表上边框的颜色
+	* 其他三边的设置方式与此方式相同，过去麻烦不建议使用，正常工作中也很少使用，推荐使用单一样式
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:300px;
+				height:300px;
+				border: 1px solid red;
+				border-top: 1px solid green;
+				border-right: 2px dotted blue;
+				border-bottom-width:10px;
+				border-bottom-style:dashed;
+				border-bottom-color:yellow;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div></div>
+	</body>
+</html>
+```
+
+### CSS边框的特征
+* 边框是什么形状？ 是一个非矩形
+* 如何用表框画出一个三角形？代码如下：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:0px;
+				height:0px;
+				border:10px solid #fff;
+				border-top-color:pink;
+				/* 
+				 width:0px;
+				 height:0px;
+				 宽和高代表盒子的大小，此时不需要盒子的大小，只需要边框的宽度即可；
+				 border:10px solid #fff;
+				 #fff 代表16进制下的白色
+				 border-top-color:pink;
+				 指定三角形的颜色
+				 */
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+```
+### CSS的背景色
+* `background`表示背景 复合属性
+* `background-color`表示背景色 单一属性
+* `background-image`表示背景图片
+* `background-repeat`表示背景图片是否重复
+* `background-position`表示背景图片的位置
+* `background-attachment`表示背景图片是否滚动
+* 内容可以把容器（div）的宽高撑开；
+* 背景不能撑起容器（div）的宽高，且不可被选中，背景色可铺满整个容器
+* transparent 背景透明（默认值）
+* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:300px;
+				height:300px;
+				border:10px solid red;
+				background-color:red;
+				background-color:rgba(255,100,211,0.5);
+				background-color: #008800;
+				/* #008800可简写为：#080 ，当发现16进制的颜色有两个相同的数字时只写一个*/
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			这是一段文字
+			<img src= 'img/1.JPG'/>
+		</div>
+	</body>
+</html>
+```
+
+### CSS背景图片与背景图平铺
+* 背景图片
+	* `background-image`后需要接`url`参数；
+	* 语法：`background-image:url(img/1.jpg)`
+	* 格式：url(图片地址)
+	* 背景图片默认会铺满整个容器
+	* none为默认值表示没有背景图
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:1000px;
+				height:600px;
+				border:10px solid red;
+				background-image: url(img/1.JPG);
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+```
+* CSS背景图平铺
+	* `background-repeat`  控制背景图是否重复平铺
+	* 语法：`background-repeat:no-repeat;`代表不平铺
+	* `repeat-x` 代表横向平铺，（延x轴平铺）
+	* `repeat-y` 代表纵向平铺，（延y轴平铺）
+	* `repeat-x与repeat-y`同时使用时只会显示最末行的效果；
+	* `repeat` 代表全部平铺（默认值）
+
+### CSS背景图片的位置
+* 传数值控制位置
+	* `background-position:0px(x) 0px(y)` 控制背景图片的位置;
+	* 传数值：如为正数则x轴向右移动，负数则x轴向左移动；y轴则为正数向下，负数向上
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:1000px;
+				height:900px;
+				border:10px solid red;
+				background-image:url(img/1.JPG);
+				background-repeat:no-repeat;
+				background-position: 10px 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+```
+* 传关键字控制位置
+	* x：`left` 左对齐`center`居中`right`右对齐
+	* y：`top` 上对齐`center`居中`bottom`下对齐
+	* 如果只传一个值，那么默认另一个值为`center`
+	* 如果不传值默认值则为x轴`left`y轴`top`,也可以理解为xy（0px 0px）即图片在容器的左上角
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:1000px;
+				height:900px;
+				border:10px solid red;
+				background-image:url(img/1.JPG);
+				background-repeat:no-repeat;
+				background-position: center center;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+```
+
+### CSS背景滚动与background复合属性写法
+* `background-attachment` 代表背景图片是否滚动
+	* `scroll`  默认值，跟随滚动条滚动
+	* `fixed`   背景图片不会跟随滚动条滚动
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:700px;
+				height:1920px;
+				border:10px solid red;
+				background-image:url(img/1.JPG);
+				background-repeat: no-repeat;
+				background-attachment:fixed;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+```
+* `background`复合写法
+	* 语法；`background: red url(img/1.JPG) no-repeat center top fixed;`
+	* 复合写法除了图片位置不能拆分写外，其余样式不区分顺序；
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:1080px;
+				height:1920px;
+				border:10px solid red;
+				background: red url(img/1.JPG) no-repeat center top fixed;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+```
+
+### CSS文字样式
+* `font` 表示文字
+	* `font-weight` 文字着重（文字加粗）`bold`代表加粗 `normal`代表正常
+	* `font-style`  文字倾斜 `italic`代表倾斜，`normal`代表正常
+	* `font-size`   文字大小（一般为偶数） 传数值如20px浏览器默认字体大小一般为16px
+	* `line-height` 文字行高
+	* `font-family`  文字字体（默认字体受浏览器和操作系统影响一般默认为宋体），中英文可分开设置字体
+	* Arial,"楷体"注意：英文字体不需要引号，但中文字体需要引号
+
+### CSS文字行高
+* `line-height`表示行高代表文字在容器中所占的高度
+	* 语法：`line-height:0px;`可直接传数值
+	* 如果行高=容器高度，则文字自动垂直居中
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				border:1px solid red;
+				height:30px;
+				line-height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>前端学习html</div>
+	</body>
+</html>
+```
+
+### CSS检测多行文字行高&文字的复合样式
+* 测量行高
+	* 首先测量文字的大小
+	* 明确两行之间文字的距离
+	* 如果行高为奇数，文字的上边距会小1px，下边距会多1px
+	* 用文字间的距离/2，如存在奇数则上边距-1px，下边距+1px
+	* 行高=上边距+文字大小+下边距
+* 文字的复合样式
+	* `font` 复合属性必须符合顺序规定“加粗、倾斜、大小/行高、字体”
+	* 语法：`font: bold italic 16px/30px "微软雅黑";`
+	* 顺序：`font:font-weight font-style font-size(必写)/font-line font-family（必写）;`
+	* 复合写法位置不可调换，但`font-weight` `font-style`可不写
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				border: 1px dotted red;
+				font: bold normal 16px/30px "微软雅黑";
+			}
+		</style>
+	</head>
+	<body>
+		<div>前端学习练习代码</div>
+	</body>
+</html>
+```
+
+### CSS文本
+* 文本的属性
+	* `color`    颜色
+	* `text-algin`    文本对齐方式(left、center、right)，默认为左对齐left
+	* `text-indent`    首行缩进（em代表缩进字符）数值加单位（em）
+	* `text-decoration`    文本修饰（上划线:`overline`、下划线:`underline`、删除线:`line-through`,无:`none`默认值，常用于去除`A`标签连接的下划线）
+	* `letter-spacing`    字符间距，值为数字加单位，如`10px`
+	* `word-spacing`    单词间距（以空格来解析）
+	* `em`是更具字体的大小进行计算的，无论字体大小是都少，`em`都会根据字体的大小自动调整
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				color:red;
+				text-align:left;
+				border:1px solid black;
+				text-indent:2em;
+				width:200px;
+				font-size: 20px;
+				text-decoration:none;
+				letter-spacing:2px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>前端学习测试文本study</div>
+	</body>
+</html>
+```
+	* `white-space`    强制不换行`nowrap`为强制不换行，`normal`为正常换行
+	* `word-break`  词内换行 `break-word`为单词换行，`break-all`所有的都不换行，`normal`正常
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:100px;
+				border: 1px solid #000;
+				color: #f00;
+				word-break: break-all;
+			}
+		</style>
+	</head>
+	<body>
+		<div>study 1367654124565465342 dsygafogjpsajgsashjrterqgqh
+		4567898764345678654345676543
+		9osjguhwijrgpo
+		</div>
+	</body>
+</html>
+```
+	* 空格的有多大：宋体下空格的大小是字体大小的一半，字体不同的情况下空格大小不同；
+### CSS padding内填充
+* `padding` 代表元素的最外面到内容的距离
+	* 设置后会撑大原有的容器，撑大的值取决`padding`的大小；
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>前端学习内填充测试</div>
+	</body>
+</html>
+```
+* `padding`单一样式
+	* `top`向上填充`right`向右填充`bottom`向下填充`left`向左填充
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				padding-top: 10px;
+				padding-right: 20px;
+				padding-bottom:30px;
+				padding-left:40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>前端学习内填充测试</div>
+	</body>
+</html>
+```
+* `padding`复合样式
+	* 传一个值时，代表上下填充的数值；
+	* 传两个值时，第一个值代表上下的数值，第二个值代表左右的数值；
+	* 传三个值时，第一个值代表上边的数值，第二个值代表左右的数值，第三个值代表下方的数值；
+	* 传四个值时，依次代表上，右，下，左的数值；
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				padding: 10px 20px 30px 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>前端学习内填充测试</div>
+	</body>
+</html>
+```
+
+### CSS margin外边距
+* `margin` 代表了标签与标签之间的距离；
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>div1</div>
+		<div>div2</div>
+	</body>
+</html>
+```
+* `margin`单一样式
+	* `top`向上填充`right`向右填充`bottom`向下填充`left`向左填充
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin-top: 10px;
+				margin-right: 20px;
+				margin-bottom:30px;
+				margin-left:40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>div1</div>
+		<div>div2</div>
+	</body>
+</html>
+```
+* `margin`复合样式
+	* 传一个值时，代表上下填充的数值；
+	* 传两个值时，第一个值代表上下的数值，第二个值代表左右的数值；
+	* 传三个值时，第一个值代表上边的数值，第二个值代表左右的数值，第三个值代表下方的数值；
+	* 传四个值时，依次代表上，右，下，左的数值；
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin: 10px 20px 30px 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>div1</div>
+		<div>div2</div>
+	</body>
+</html>
+```
+* `padding`与`margin`的区别
+	* `padding` 作用在元素里面，`padding`范围内会显示背景颜色，如设置图片则会显示图片；
+	* `margin` 作用在元素的外面，`margin`范围内不会显示背景颜色及图片；
+	* `padding`用于调整父子级元素之间的距离；
+	* `margin`用于调整同级元素之间的距离；
+* `margin`的问题
+	* `margin`传递问题，只会传递上下的距离，`margin`会将子级的`margin-top`&`margin-bottom`的值传递给父级；
+	* 解决办法：给父级添加一个边框`border`；
+	* `margin`叠压问题，只有上下会叠压，左右不会，上方元素的`margin-bottom`&下方元素的`margin-top`叠压在了一起（会取大的值）；
+	* 解决办法：只给一个元素设置对应的`margin-top`/`margin-bottom`即可；
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#box1{
+				background: red;
+				border:1px solid #000;
+			}
+			#box2{
+				height:50px;
+				background: green;
+				color: #fff;
+				margin:10px 10px 20px 10px;
+			}
+			#box3{
+				height: 50px;
+				background: pink;
+				color: #fff;
+				margin:0px 10px 10px 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			<div id="box2">div2</div>
+			<div id="box3">div3</div>
+		</div>
+	</body>
+</html>
+```
+
+### CSS div如何居中显示
+* `margin-left` 如果直接赋予`auto`表示系统自动计算距离左边的距离，此时元素居右显示；
+* `margin-right` 如果直接赋予`auto`表示系统自动计算距离右边的距离，此时元素居左显示；
+* `margin-right` 如果直接赋予`0px auto`表示系统自动计算距离左右两边的距离，此时元素居中显示；
+* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width:100px;
+				height:100px;
+				background: pink;
+				margin: 0px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+```
+
+### CSS盒模型
+* 盒模型大小的计算
+	* 高度：`border`上下+`padding`上下+`maring`上下+元素的`height`；
+	* 高度：`border`左右+`padding`左右+`maring`左右+元素的`width`；
+	* 练习代码：
+``` HTML
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: pink;
+				border: 2px solid #000;
+				padding: 20px;
+				margin: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+```
